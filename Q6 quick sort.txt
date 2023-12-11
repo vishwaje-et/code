@@ -1,0 +1,32 @@
+def quick_sort(arr):
+    if len(arr) <= 1:
+        return arr
+    else:
+        pivot = arr[0]
+        less_than_pivot = [x for x in arr[1:] if x <= pivot]
+        greater_than_pivot = [x for x in arr[1:] if x > pivot]
+        return quick_sort(less_than_pivot) + [pivot] + quick_sort(greater_than_pivot)
+
+# Function to display top five scores
+def display_top_five(arr):
+    print("Top five scores:")
+    for i in range(min(5, len(arr))):
+        print(f"{i + 1}. {arr[i]}%")
+
+# Main program
+if __name__ == "__main__":
+    # Input: take user input for first-year percentages
+    percentages_str = input("Enter first-year percentages separated by spaces: ")
+    percentages = [float(x) for x in percentages_str.split()]
+
+    # Display the unsorted array
+    print("\nUnsorted array:")
+    print(percentages)
+
+    # Sort using quick sort
+    sorted_percentages = quick_sort(percentages.copy())
+    print("\nSorted array using Quick Sort:")
+    print(sorted_percentages)
+
+    # Display top five scores
+    display_top_five(sorted_percentages)

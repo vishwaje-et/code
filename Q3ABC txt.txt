@@ -1,0 +1,67 @@
+""" Write a Python program for department library 
+which has N books, write functions for
+following:
+a) Delete the duplicate entries
+b) Display books in ascending order based on cost 
+of books
+c) Count number of books with cost more than 500.
+d) Copy books in a new list which has cost less than 
+500."""
+
+book_list = []
+
+def add_book(name,cost):
+    book = (name,cost)
+    book_list.append(book)
+    
+add_book("DSA",500)
+add_book("CG",200)
+add_book("OOP",300)
+add_book("DSA",500)
+add_book("OS",100)
+add_book("DM",350)
+
+# print(book_list)
+
+def delete_duplicate(book_list):
+    unique_book_list = []
+    for book in book_list:
+        if book not in unique_book_list:
+            unique_book_list.append(book)
+    return unique_book_list
+
+book_list = delete_duplicate(book_list)
+print("a.", book_list)
+
+bl = [2,5,9,8,3,7,1,4]
+
+def arrange_books(book_list):
+    for j in range(len(book_list) - 1):
+        min_value_index = j
+        for i in range(j, len(book_list)):
+           if book_list[min_value_index][1] > book_list[i][1]:
+                min_value_index = i
+        
+        book_list[j],book_list[min_value_index] = book_list[min_value_index], book_list[j]
+        
+arrange_books(book_list)
+print("b.", book_list)
+
+def count_book_filter(cost=500):
+    cnt = 0
+    for book in book_list:
+        if book[1] >= cost:
+            cnt +=1 
+    return cnt
+
+print("c.", count_book_filter())
+
+def seprate_book_filter(cost=500):
+    less_cost_book = []
+    for book in book_list:
+        if book[1] < cost:
+            less_cost_book.append(book)
+    return less_cost_book
+
+print("d.", seprate_book_filter())
+ 

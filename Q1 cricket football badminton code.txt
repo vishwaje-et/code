@@ -1,0 +1,53 @@
+
+
+# group A student's play cricket
+# group B students play badminton
+# group C student's play cricket
+
+
+A = ["rushi","atharva","raj","sujal"]
+B = ["rushi","abhi","sam","priya","sujal"]
+C = ["rushi","sam","priya","raj","sagar"]
+
+
+def intersection(l1,l2):
+    res = []
+    for students in l1: 
+        if students in l2:
+            res.append(students)
+    return res
+
+
+def union(l1,l2):
+    res = l2.copy()
+    for students in l1:
+        if not students in l2:
+            res.append(students)
+    return res
+
+def diff(l1,l2):
+    res =[]
+    for students in l1:
+        if not students in l2:
+            res.append(students)
+    return res
+
+
+
+print(f"student's play cricket = {A}\nstudents play badminton = {B}\nstudent's play cricket = {C} \n")
+
+print("\nList of students who play both cricket and badminton:\n", union(A,B))
+
+u = union(A,B)
+i = intersection(A,B)
+
+print("\nList of students who play either cricket or badminton but not both:\n", diff(u,i))
+
+diffcb = diff(C,B)
+
+print("\nNumber of students who play neither cricket nor badminton:\n", diff(diffcb,A) )
+
+unionac = union(A,C)
+print("\nNumber of students who play cricket and football but not badminton:\n", diff(unionac,B))
+
+

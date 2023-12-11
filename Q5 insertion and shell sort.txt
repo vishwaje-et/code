@@ -1,0 +1,54 @@
+
+
+
+def insertion_sort(arr):
+    for i in range(1, len(arr)):
+        key = arr[i]
+        j = i - 1
+        while j >= 0 and key < arr[j]:
+            arr[j + 1] = arr[j]
+            j -= 1
+        arr[j + 1] = key
+
+def shell_sort(arr):
+    n = len(arr)
+    gap = n // 2
+    while gap > 0:
+        for i in range(gap, n):
+            temp = arr[i]
+            j = i
+            while j >= gap and arr[j - gap] > temp:
+                arr[j] = arr[j - gap]
+                j -= gap
+            arr[j] = temp
+        gap //= 2
+
+# Function to display top five scores
+def display_top_five(arr):
+    print("Top five scores:")
+    for i in range(min(5, len(arr))):
+        print(f"{i + 1}. {arr[i]}")
+
+# Main program
+if __name__ == "__main__":
+    # Input: take user input for second-year percentages
+    percentages_str = input("Enter second-year percentages separated by spaces: ")
+    percentages = [float(x) for x in percentages_str.split()]
+
+    # Display the unsorted array
+    print("\nUnsorted array:")
+    print(percentages)
+
+    # Sort using insertion sort
+    insertion_sort(percentages.copy())
+    print("\nSorted array using Insertion Sort:")
+    print(percentages)
+
+    # Sort using shell sort
+    shell_sort(percentages.copy())
+    print("\nSorted array using Shell Sort:")
+    print(percentages)
+
+    # Display top five scores
+    display_top_five(percentages)
+

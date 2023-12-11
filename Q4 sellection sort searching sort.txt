@@ -1,0 +1,26 @@
+
+  
+#SELECTION SORTING  
+def selection_sort(a):  #O(n^2)
+    for i in range(len(a) - 1): #O(n)
+        min_index = i
+        for j in range(i, len(a)):
+            if a[min_index] > a[j]:
+                min_index = j
+        a[i], a[min_index] = a[min_index], a[i]
+
+#BUBBLE SORTING  
+def bubble_sort(a): #O(n^2)
+    for j in range(len(a)):  
+        for i in range(len(a) - 1):
+            if a[i] > a[i + 1]:
+                a[i], a[i + 1] = a[i + 1], a[i]
+                      
+        
+a = [7, 6, 8, 1, 9, 4, 2]
+print("\nUnsorted Array:\n", a)
+selection_sort(a)
+print("\nSorted Array:\n", a) 
+bubble_sort(a)
+print("\nBubble Sort Array:\n", a)
+

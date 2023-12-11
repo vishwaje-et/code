@@ -1,0 +1,53 @@
+
+
+marklist = [23,None, None,11,23,99,20,23,78,23,23,23,23,56,56,78]
+
+# n = int(input("Enter number of students: "))
+# for i in range(n):
+#     mark = int(input(f"Enter marks of {i+1}student:"))
+#     marklist.append(mark )
+    
+# print(marklist)
+
+#calculating avg
+total = 0
+
+#calculate hughest and lowest number
+min_value = marklist[0]
+max_value = marklist[0]
+
+#counting absent students
+absent_students = 0
+
+#calculating frequency
+freq = {}
+
+for mark in marklist:
+    if mark == None:
+        absent_students += 1
+    else:
+        total += mark       
+        if min_value > mark:
+            min_value = mark
+        if max_value < mark:
+            max_value = mark
+        
+        if freq.get(mark) == None:
+            freq[mark] = 1
+        else:
+            freq[mark] += 1
+
+highest_freq = 0
+highest_freq_mark = 0
+
+for mark in freq:
+    if freq[mark] > highest_freq:
+        highest_freq = freq[mark]
+        highest_freq_mark = mark
+        
+    
+        
+print(f"Avg score of the class = {total/len(marklist)}") 
+print(f"Highest marks is = {max_value}\nLowest marks is = {min_value}")
+print(f"Number of absent students = {absent_students}") 
+print(f"Mark with highest frequency = {highest_freq_mark}")
